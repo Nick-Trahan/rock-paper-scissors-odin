@@ -8,11 +8,20 @@
 <body>
     <script>
       function computerPlay() {
-        let playMoves = ['Rock', 'Paper', 'Scissors'];
+        let gameMoves = ['Rock', 'Paper', 'Scissors'];
         let randomizer = Math.floor(Math.random() * 3);
-        let randomMove = playMoves[randomizer];
+        let randomMove = gameMoves[randomizer];
 
         return randomMove;
+      }
+
+      function humanPlay() {
+        let playerInput = prompt('Rock, Paper, Scissors, SHOOT!');
+
+        let smallInput = playerInput.toLowerCase();
+        let humanMove = smallInput.charAt(0).toUpperCase() + smallInput.slice(1);
+
+        return humanMove;
       }
 
       function playRound(playerSelection, computerSelection) {
@@ -53,8 +62,8 @@
         }
       }
 
-      const playerSelection = 'Rock';
-      const computerSelection = computerPlay();
+      const playerSelection = humanPlay();            // for testing
+      const computerSelection = computerPlay();  // for testing
 
       console.log(playRound(playerSelection, computerSelection));
     </script>
