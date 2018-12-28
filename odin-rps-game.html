@@ -27,38 +27,54 @@
       function playRound(playerSelection, computerSelection) {
         let win = 'You Win! ' + playerSelection + ' beats ' + computerSelection;
         let lose = 'You Lose! ' + computerSelection + ' beats ' + playerSelection;
+        let tie = 'It\'s a tie! Please try again.';
+        let broken = 'Something went wrong :(';
 
         switch (computerSelection) {
           case 'Rock':
             if (playerSelection === 'Paper') {
               return win;
+
             } else if(playerSelection === 'Scissors') {
               return lose;
+
+            } else if(playerSelection === 'Rock') {
+              return tie;
+
             } else {
-              return 'It\'s a tie! Try again.';
+              return broken;
             }
             break;
 
           case 'Paper':
             if (playerSelection === 'Scissors') {
               return win;
+
             } else if(playerSelection === 'Rock') {
               return lose;
+
+            } else if(playerSelection === 'Paper') {
+              return tie;
+
             } else {
-              return 'It\'s a tie! Try again.';
+              return broken;
             }
             break;
 
           case 'Scissors':
             if (playerSelection === 'Rock') {
               return win;
+
             } else if(playerSelection === 'Paper') {
               return lose;
+
+            } else if(playerSelection === 'Scissors') {
+              return tie;
+
             } else {
-              return 'It\'s a tie! Try again.';
+              return broken;
             }
             break;
-        
         }
       }
 
