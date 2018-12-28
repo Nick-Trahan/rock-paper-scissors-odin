@@ -4,10 +4,16 @@
   <meta charset="utf-8" />
   <meta name="viewport" comtent="width=device-width, initial-scale=0.86, maximum-scale=3.0, minimum-scale=0.86">
   <title>Test Bed</title>
-  <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
     <script>
+      function computerPlay() {
+        let playMoves = ['Rock', 'Paper', 'Scissors'];
+        let randomizer = Math.floor(Math.random() * 3);
+        let cpuMove = playMoves[randomizer];
+
+        return cpuMove;
+      }
     </script>
 </body>
 </html>
