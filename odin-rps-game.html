@@ -10,10 +10,53 @@
       function computerPlay() {
         let playMoves = ['Rock', 'Paper', 'Scissors'];
         let randomizer = Math.floor(Math.random() * 3);
-        let cpuMove = playMoves[randomizer];
+        let randomMove = playMoves[randomizer];
 
-        return cpuMove;
+        return randomMove;
       }
+
+      function playRound(playerSelection, computerSelection) {
+        let win = 'You Win! ' + playerSelection + ' beats ' + computerSelection;
+        let lose = 'You Lose! ' + computerSelection + ' beats ' + playerSelection;
+
+        switch (computerSelection) {
+          case 'Rock':
+            if (playerSelection === 'Paper') {
+              return win;
+            } else if(playerSelection === 'Scissors') {
+              return lose;
+            } else {
+              return 'It\'s a tie! Try again.';
+            }
+            break;
+
+          case 'Paper':
+            if (playerSelection === 'Scissors') {
+              return win;
+            } else if(playerSelection === 'Rock') {
+              return lose;
+            } else {
+              return 'It\'s a tie! Try again.';
+            }
+            break;
+
+          case 'Scissors':
+            if (playerSelection === 'Rock') {
+              return win;
+            } else if(playerSelection === 'Paper') {
+              return lose;
+            } else {
+              return 'It\'s a tie! Try again.';
+            }
+            break;
+        
+        }
+      }
+
+      const playerSelection = 'Rock';
+      const computerSelection = computerPlay();
+
+      console.log(playRound(playerSelection, computerSelection));
     </script>
 </body>
 </html>
