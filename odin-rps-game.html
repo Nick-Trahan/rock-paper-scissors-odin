@@ -6,7 +6,10 @@
   <title>Test Bed</title>
 </head>
 <body>
-    <script>
+  <script>
+      let playerSelection = humanPlay();            // for testing
+      let computerSelection = computerPlay();  // for testing
+
       function computerPlay() {
         let gameMoves = ['Rock', 'Paper', 'Scissors'];
         let randomizer = Math.floor(Math.random() * 3);
@@ -25,10 +28,10 @@
       }
 
       function playRound(playerSelection, computerSelection) {
-        let win = 'You Win! ' + playerSelection + ' beats ' + computerSelection;
-        let lose = 'You Lose! ' + computerSelection + ' beats ' + playerSelection;
-        let tie = 'It\'s a tie! Please try again.';
-        let broken = 'Something went wrong :(';
+        let win = 'win';
+        let lose = 'lose';
+        let tie = 'tie';
+        let broken = 'broken';
 
         switch (computerSelection) {
           case 'Rock':
@@ -77,11 +80,46 @@
             break;
         }
       }
+    function game() {
+      let playerScore = 0;
+      let computerScore = 0;
 
-      const playerSelection = humanPlay();            // for testing
-      const computerSelection = computerPlay();  // for testing
+      for(let i = 0; i < 5; i++) {
+        let playerSelection = humanPlay();
+        let computerSelection = computerPlay();
 
-      console.log(playRound(playerSelection, computerSelection));
+        let round = playRound(playerSelection, computerSelection);
+
+        switch (round) {
+          case 'win':
+            playerScore++;
+            console.log('You Win!');
+            break;
+          
+          case 'lose':
+            computerScore++;
+            console.log('You Lose!');
+            break;
+
+          case 'tie':
+            console.log('It\'s a tie!');
+            break;
+
+          default:
+            console.log('Something broke');
+        }
+      }
+      if(playerScore > computerScore) {
+        console.log('You Win!! ' + playerScore + ' to ' + computerScore);
+      } else if (playerScore < computerScore) {
+        console.log('You Lose!! ' + playerScore + ' to ' + computerScore);
+      } else if (playerScore === computerScore) {
+        console.log('It\'s a Tie!! ' + playerScore + ' to ' + computerScore);
+      } else {
+        console.log('Broken');
+      }
+    }
+
     </script>
 </body>
 </html>
