@@ -7,119 +7,115 @@
 </head>
 <body>
   <script>
-      let playerSelection = humanPlay();            // for testing
-      let computerSelection = computerPlay();  // for testing
+    function computerPlay() {
+      let gameMoves = ['Rock', 'Paper', 'Scissors'];
+      let randomizer = Math.floor(Math.random() * 3);
+      let randomMove = gameMoves[randomizer];
 
-      function computerPlay() {
-        let gameMoves = ['Rock', 'Paper', 'Scissors'];
-        let randomizer = Math.floor(Math.random() * 3);
-        let randomMove = gameMoves[randomizer];
-
-        return randomMove;
-      }
-
-      function humanPlay() {
-        let playerInput = prompt('Rock, Paper, Scissors, SHOOT!');
-
-        let smallInput = playerInput.toLowerCase();
-        let humanMove = smallInput.charAt(0).toUpperCase() + smallInput.slice(1);
-
-        return humanMove;
-      }
-
-      function playRound(playerSelection, computerSelection) {
-        let win = 'win';
-        let lose = 'lose';
-        let tie = 'tie';
-        let broken = 'broken';
-
-        switch (computerSelection) {
-          case 'Rock':
-            if (playerSelection === 'Paper') {
-              return win;
-
-            } else if(playerSelection === 'Scissors') {
-              return lose;
-
-            } else if(playerSelection === 'Rock') {
-              return tie;
-
-            } else {
-              return broken;
-            }
-            break;
-
-          case 'Paper':
-            if (playerSelection === 'Scissors') {
-              return win;
-
-            } else if(playerSelection === 'Rock') {
-              return lose;
-
-            } else if(playerSelection === 'Paper') {
-              return tie;
-
-            } else {
-              return broken;
-            }
-            break;
-
-          case 'Scissors':
-            if (playerSelection === 'Rock') {
-              return win;
-
-            } else if(playerSelection === 'Paper') {
-              return lose;
-
-            } else if(playerSelection === 'Scissors') {
-              return tie;
-
-            } else {
-              return broken;
-            }
-            break;
-        }
-      }
-    function game() {
-      let playerScore = 0;
-      let computerScore = 0;
-
-      for(let i = 0; i < 5; i++) {
-        let playerSelection = humanPlay();
-        let computerSelection = computerPlay();
-
-        let round = playRound(playerSelection, computerSelection);
-
-        switch (round) {
-          case 'win':
-            playerScore++;
-            console.log('You Win!');
-            break;
-          
-          case 'lose':
-            computerScore++;
-            console.log('You Lose!');
-            break;
-
-          case 'tie':
-            console.log('It\'s a tie!');
-            break;
-
-          default:
-            console.log('Something broke');
-        }
-      }
-      if(playerScore > computerScore) {
-        console.log('You Win!! ' + playerScore + ' to ' + computerScore);
-      } else if (playerScore < computerScore) {
-        console.log('You Lose!! ' + playerScore + ' to ' + computerScore);
-      } else if (playerScore === computerScore) {
-        console.log('It\'s a Tie!! ' + playerScore + ' to ' + computerScore);
-      } else {
-        console.log('Broken');
-      }
+      return randomMove;
     }
 
+    function humanPlay() {
+      let playerInput = prompt('Rock, Paper, Scissors, SHOOT!');
+
+      let smallInput = playerInput.toLowerCase();
+      let humanMove = smallInput.charAt(0).toUpperCase() + smallInput.slice(1);
+
+      return humanMove;
+    }
+
+    function playRound(playerSelection, computerSelection) {
+      let win = 'win';
+      let lose = 'lose';
+      let tie = 'tie';
+      let broken = 'broken';
+
+      switch (computerSelection) {
+        case 'Rock':
+          if (playerSelection === 'Paper') {
+            return win;
+
+          } else if(playerSelection === 'Scissors') {
+            return lose;
+
+          } else if(playerSelection === 'Rock') {
+              return tie;
+
+          } else {
+            return broken;
+          }
+          break;
+
+        case 'Paper':
+          if (playerSelection === 'Scissors') {
+            return win;
+
+          } else if(playerSelection === 'Rock') {
+            return lose;
+
+          } else if(playerSelection === 'Paper') {
+            return tie;
+
+          } else {
+              return broken;
+          }
+          break;
+
+        case 'Scissors':
+          if (playerSelection === 'Rock') {
+            return win;
+
+          } else if(playerSelection === 'Paper') {
+            return lose;
+
+          } else if(playerSelection === 'Scissors') {
+            return tie;
+
+          } else {
+            return broken;
+          }
+          break;
+        }
+      }
+      function game() {
+        let playerScore = 0;
+        let computerScore = 0;
+
+        for(let i = 0; i < 5; i++) {
+          let playerSelection = humanPlay();
+          let computerSelection = computerPlay();
+
+          let round = playRound(playerSelection, computerSelection);
+
+          switch (round) {
+            case 'win':
+              playerScore++;
+              console.log('You Win!');
+              break;
+          
+            case 'lose':
+              computerScore++;
+              console.log('You Lose!');
+              break;
+
+            case 'tie':
+              console.log('It\'s a tie!');
+              break;
+
+            default:
+              console.log('Something broke');
+          }
+        }
+        if(playerScore > computerScore) {
+          console.log('You Win!! ' + playerScore + ' to ' + computerScore);
+        } else if (playerScore < computerScore) {
+          console.log('You Lose!! ' + playerScore + ' to ' + computerScore);
+        } else if (playerScore === computerScore) {
+          console.log('It\'s a Tie!! ' + playerScore + ' to ' + computerScore);
+        } else {
+          console.log('Broken');
+        }
+      }
     </script>
 </body>
 </html>
