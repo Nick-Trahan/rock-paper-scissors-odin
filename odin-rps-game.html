@@ -6,6 +6,17 @@
   <title>Rock, Paper, Scissors, SHOOT!!</title>
 </head>
 <body>
+  <div id="input-field" class="fields">
+    <button id="rock" class="game-buttons">Rock</button>
+    <button id="paper" class="game-buttons">Paper</button>
+    <button id="scissors" class="game-buttons">Scissors</button>
+  </div>
+  <div id="results-field" class="fields">
+    <p id="round-results"></p>
+    <p id="player-score" class="scores"></p>
+    <p id="computer-score" class="scores"></p>
+    <p id="game-winner"></p>
+  </div>
   <script>
     function computerPlay() {
       let gameMoves = ['Rock', 'Paper', 'Scissors'];
