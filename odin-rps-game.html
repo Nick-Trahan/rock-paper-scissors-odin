@@ -28,9 +28,9 @@
   <script>
     const btnGo = document.querySelector('#go-button')
     const divInput = document.querySelector('#input-div');
-    const fieldPlayerScore= document.querySelector('#player-score');
-    const fieldComputerScore = document.querySelector('#computer-score');
-    const fieldGameWinner = document.querySelector('#game-winner');
+
+    let playerScore = 0;
+    let computerScore = 0;
 
     btnGo.addEventListener('click', showGame);
 
@@ -54,94 +54,93 @@
     }
 
     function playRound(playerSelection) {
-      let computerSelection = computerPlay();
+      const computerSelection = computerPlay();
 
-      let cappedHumanSelection = playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1);
+      const cappedPlayerSelection = playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1);
       
-      const win = 'You Win!! ' + cappedHumanSelection + ' beats ' + computerSelection + '.';
-      const lose = 'You Lose!! ' + computerSelection + ' beats ' + cappedHumanSelection + '.';
-      const tie = 'It\'s a Tie!!';
+      const win = 'win';
+      const lose = 'lose';
+      const tie = 'tie';
 
 
       switch(computerSelection) {
         case 'Rock':
           if(playerSelection === 'paper') {
-            showRoundResult(win);
+            displayRoundResult(win, cappedPlayerSelection, computerSelection);
           } else if(playerSelection === 'scissors') {
-            showRoundResult(lose);
+            displayRoundResult(lose, cappedPlayerSelection, computerSelection);
           } else {
-            showRoundResult(tie);
+            displayRoundResult(tie, cappedPlayerSelection, computerSelection);
           }
           break;
 
         case 'Paper':
           if(playerSelection === 'scissors') {
-            showRoundResult(win);
+            displayRoundResult(win, cappedPlayerSelection, computerSelection);
           } else if(playerSelection === 'rock') {
-            showRoundResult(lose);
+            displayRoundResult(lose, cappedPlayerSelection, computerSelection);
           } else {
-            showRoundResult(tie);
+            displayRoundResult(tie, cappedPlayerSelection, computerSelection);
           }
           break;
 
         case 'Scissors':
           if(playerSelection === 'rock') {
-            showRoundResult(win);
+            displayRoundResult(win, cappedPlayerSelection, computerSelection);
           } else if(playerSelection === 'paper') {
-            showRoundResult(lose);
+            displayRoundResult(lose, cappedPlayerSelection, computerSelection);
           } else {
-            showRoundResult(tie);
+            displayRoundResult(tie, cappedPlayerSelection, computerSelection);
           }
           break;
         }
       }
 
-      function showRoundResult(result) {
+      function displayRoundResult(result, playerSelection, computerSelection) {
         const fieldRoundResults = document.querySelector('#round-results');
 
-        fieldRoundResults.textContent = result; 
+        let roundResult;
+
+        if(result === 'win') {
+          roundResult = 'You Win!! ' + playerSelection + ' beats ' + computerSelection + '.';
+          displayScore('win');
+        } else if(result === 'lose') {
+          roundResult = 'You Lose!! ' + computerSelection + ' beats ' + playerSelection + '.';
+          displayScore('lose');
+        } else {
+          roundResult = 'It\'s a Tie!! Try Again!';
+          displayScore('tie');
+        }
+
+        fieldRoundResults.textContent = roundResult;
+      }
+
+      function displayScore(condition) {
+        const fieldPlayerScore= document.querySelector('#player-score');
+        const fieldComputerScore = document.querySelector('#computer-score');
+
+        if(condition === 'win') {
+          playerScore++;
+        } else if(condition === 'lose') {
+          computerScore++;
+        }
+
+        fieldPlayerScore.textContent = 'Player Score = ' + playerScore;
+        fieldComputerScore.textContent = 'Computer Score = ' + computerScore;
+
+        declareWinner();
       }
       
-      function game() {
-        let playerScore = 0;
-        let computerScore = 0;
+      function declareWinner() {
+        const fieldGameWinner = document.querySelector('#game-winner');
 
-        for(let i = 0; i < 5; i++) {
-          const playerSelection = humanPlay();
-          const computerSelection = computerPlay();
-
-          const round = playRound(playerSelection, computerSelection);
-
-          switch(round) {
-            case 'win':
-              playerScore++;
-              console.log('Round ' + (i + 1) + ': ' + 'You Win! ' + playerSelection + ' beats ' +  computerSelection + '.');
-              break;
-          
-            case 'lose':
-              computerScore++;
-              console.log('Round ' + (i + 1) + ': ' + 'You Lose! ' + computerSelection + ' beats ' +  playerSelection + '.');
-              break;
-
-            case 'tie':
-              console.log('Round ' + (i + 1) + ': ' + 'It\'s a tie!');
-              break;
-          }
-        }
-        
-        if(playerScore > computerScore) {
-          console.log('You Win the Game!! ' + playerScore + ' to ' + computerScore);
-
-        } else if(playerScore < computerScore) {
-          console.log('You Lose the Game!! ' + playerScore + ' to ' + computerScore);
-
-        } else if(playerScore === computerScore) {
-          console.log('It\'s a Tie!! ' + playerScore + ' to ' + computerScore);
-
-        } else {
-          console.log('Broken');
+        if (playerScore === 5) {
+          fieldGameWinner.textContent = 'You Win the Game!! ' + playerScore + ' to ' + computerScore;
+        } else if (computerScore === 5) {
+          fieldGameWinner.textContent = 'You Lose the Game!! ' + playerScore + ' to ' + computerScore;
         }
       }
+
     </script>
 </body>
 </html>
