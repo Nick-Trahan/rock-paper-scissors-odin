@@ -40,13 +40,17 @@
     btnGo.addEventListener('click', showGame);
 
     function showGame() {
-      gameFields.forEach((element) => {element.classList.toggle('hidden-fields')});
+      gameFields.forEach((element) => {
+        element.classList.toggle('hidden-fields');
+        });
 
       divIntro.classList.toggle('hidden-fields');
       divWinner.classList.toggle('hidden-fields');
     }
     
-    divInput.addEventListener('click', (event) => {const clickedButton = event.target; playRound(clickedButton.id);});
+    divInput.addEventListener('click', (event) => {
+      const clickedButton = event.target; playRound(clickedButton.id);
+      });
 
     function computerPlay() {
       const gameMoves = ['Rock', 'Paper', 'Scissors'];
@@ -138,11 +142,15 @@
         const fieldGameWinner = document.querySelector('#game-winner');
 
         if (playerScore === 5) {
-          gameFields.forEach((element) => {element.classList.toggle('hidden-fields')});
+          gameFields.forEach((element) => {
+            element.classList.toggle('hidden-fields');
+            });
           divWinner.classList.toggle('hidden-fields');
           fieldGameWinner.textContent = 'You Win the Game!! ' + playerScore + ' to ' + computerScore;
         } else if (computerScore === 5) {
-          gameFields.forEach((element) => {element.classList.toggle('hidden-fields')});
+          gameFields.forEach((element) => {
+            element.classList.toggle('hidden-fields');
+            });
           divWinner.classList.toggle('hidden-fields');
           fieldGameWinner.textContent = 'You Lose the Game!! ' + playerScore + ' to ' + computerScore;
         }
