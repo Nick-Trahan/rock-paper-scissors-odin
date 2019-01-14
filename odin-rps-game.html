@@ -28,8 +28,6 @@
   <script>
     const btnGo = document.querySelector('#go-button')
     const divInput = document.querySelector('#input-div');
-    const divResults = document.querySelector('#results-div');
-    const fieldRoundResults = document.querySelector('#round-results');
     const fieldPlayerScore= document.querySelector('#player-score');
     const fieldComputerScore = document.querySelector('#computer-score');
     const fieldGameWinner = document.querySelector('#game-winner');
@@ -56,49 +54,52 @@
     }
 
     function playRound(playerSelection) {
-      const win = 'win';
-      const lose = 'lose';
-      const tie = 'tie';
-
       let computerSelection = computerPlay();
+
+      let cappedHumanSelection = playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1);
+      
+      const win = 'You Win!! ' + cappedHumanSelection + ' beats ' + computerSelection + '.';
+      const lose = 'You Lose!! ' + computerSelection + ' beats ' + cappedHumanSelection + '.';
+      const tie = 'It\'s a Tie!!';
+
 
       switch(computerSelection) {
         case 'Rock':
           if(playerSelection === 'paper') {
-            console.log('win');
-
+            showRoundResult(win);
           } else if(playerSelection === 'scissors') {
-            console.log('lose');
-
+            showRoundResult(lose);
           } else {
-            console.log('tie');
+            showRoundResult(tie);
           }
           break;
 
         case 'Paper':
           if(playerSelection === 'scissors') {
-            console.log('win');
-
+            showRoundResult(win);
           } else if(playerSelection === 'rock') {
-            console.log('lose');
-
+            showRoundResult(lose);
           } else {
-            console.log('tie');
+            showRoundResult(tie);
           }
           break;
 
         case 'Scissors':
           if(playerSelection === 'rock') {
-            console.log('win');
-
+            showRoundResult(win);
           } else if(playerSelection === 'paper') {
-            console.log('lose');
-
+            showRoundResult(lose);
           } else {
-            console.log('tie');
+            showRoundResult(tie);
           }
           break;
         }
+      }
+
+      function showRoundResult(result) {
+        const fieldRoundResults = document.querySelector('#round-results');
+
+        fieldRoundResults.textContent = result; 
       }
       
       function game() {
