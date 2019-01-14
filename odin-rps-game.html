@@ -6,33 +6,49 @@
   <title>Rock, Paper, Scissors, SHOOT!!</title>
 </head>
 <body>
-  <div id="input-field" class="fields">
+  <div id="intro-div" class="game-fields">
+    <h1 id="title">Rock, Paper, Scissors</h1>
+    <p id='instructions'>Instructions go here</p>
+    <button id="go-button" class="game-buttons">Start Game</button>
+  </div>
+  <div id="input-div" class="game-fields">
     <button id="rock" class="game-buttons">Rock</button>
     <button id="paper" class="game-buttons">Paper</button>
     <button id="scissors" class="game-buttons">Scissors</button>
   </div>
-  <div id="results-field" class="fields">
+  <div id="results-div" class="game-fields">
     <p id="round-results" class="results"></p>
     <p id="player-score" class="scores"></p>
     <p id="computer-score" class="scores"></p>
     <p id="game-winner" class="results"></p>
   </div>
   <script>
+    const btnRock = document.querySelector('#rock');
+    const btnPaper = document.querySelector('#paper');
+    const btnScissors = document.querySelector('#scissors');
+    const divInput = document.querySelector('#input-div');
+    const divResults = document.querySelector('#results-div');
+    const fieldRoundResults = document.querySelector('#round-results');
+    const fieldPlayerScore= document.querySelector('#player-score');
+    const fieldComputerScore = document.querySelector('#computer-score');
+    const fieldGameWinner = document.querySelector('#game-winner');
+
+    // divInput.addEventListener('click', function (event) {const clickedButton = event.target; humanPlay(clickedButton);});
+
+    function humanPlay(button) {
+      const playerInput = button.id;
+      const smallInput = playerInput.toLowerCase();
+      const humanMove = smallInput.charAt(0).toUpperCase() + smallInput.slice(1);
+
+      return humanMove;
+    }
+
     function computerPlay() {
       const gameMoves = ['Rock', 'Paper', 'Scissors'];
       const randomizer = Math.floor(Math.random() * 3);
       const randomMove = gameMoves[randomizer];
 
       return randomMove;
-    }
-
-    function humanPlay() {
-      const playerInput = prompt('Rock, Paper, Scissors, SHOOT!');
-
-      const smallInput = playerInput.toLowerCase();
-      const humanMove = smallInput.charAt(0).toUpperCase() + smallInput.slice(1);
-
-      return humanMove;
     }
 
     function playRound(playerSelection, computerSelection) {
