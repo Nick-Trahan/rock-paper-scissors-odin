@@ -1,0 +1,8 @@
+* {
+  box-sizing: border-box;
+}
+
+#input-div, 
+#results-div {
+  display: none;
+}
