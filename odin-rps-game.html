@@ -7,17 +7,19 @@
   <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-  <div id="intro-div" class="game-fields">
+  <div id="title-div" class="intro-fields">
     <h1 id="title">Rock, Paper, Scissors</h1>
+  </div>
+  <div id="intro-div">
     <p id='instructions'>Instructions go here</p>
     <button id="go-button" class="game-buttons">Start Game</button>
   </div>
-  <div id="input-div" class="game-fields">
+  <div id="input-div" class="hidden-fields">
     <button id="rock" class="game-buttons">Rock</button>
     <button id="paper" class="game-buttons">Paper</button>
     <button id="scissors" class="game-buttons">Scissors</button>
   </div>
-  <div id="results-div" class="game-fields">
+  <div id="results-div" class="hidden-fields">
     <p id="round-results" class="results"></p>
     <p id="player-score" class="scores"></p>
     <p id="computer-score" class="scores"></p>
@@ -35,7 +37,16 @@
     const fieldComputerScore = document.querySelector('#computer-score');
     const fieldGameWinner = document.querySelector('#game-winner');
 
-    // divInput.addEventListener('click', function (event) {const clickedButton = event.target; humanPlay(clickedButton);});
+    btnGo.addEventListener('click', showGame);
+
+    function showGame() {
+      const gameFields = document.querySelectorAll('.hidden-fields');
+      const introDiv = document.querySelector('#intro-div');
+      
+      gameFields.forEach((element) => {element.classList.toggle('hidden-fields')});
+
+      introDiv.classList.toggle('hidden-fields');
+    }
 
     function humanPlay(button) {
       const playerInput = button.id;
