@@ -12,34 +12,34 @@
     <button id="scissors" class="game-buttons">Scissors</button>
   </div>
   <div id="results-field" class="fields">
-    <p id="round-results"></p>
+    <p id="round-results" class="results"></p>
     <p id="player-score" class="scores"></p>
     <p id="computer-score" class="scores"></p>
-    <p id="game-winner"></p>
+    <p id="game-winner" class="results"></p>
   </div>
   <script>
     function computerPlay() {
-      let gameMoves = ['Rock', 'Paper', 'Scissors'];
-      let randomizer = Math.floor(Math.random() * 3);
-      let randomMove = gameMoves[randomizer];
+      const gameMoves = ['Rock', 'Paper', 'Scissors'];
+      const randomizer = Math.floor(Math.random() * 3);
+      const randomMove = gameMoves[randomizer];
 
       return randomMove;
     }
 
     function humanPlay() {
-      let playerInput = prompt('Rock, Paper, Scissors, SHOOT!');
+      const playerInput = prompt('Rock, Paper, Scissors, SHOOT!');
 
-      let smallInput = playerInput.toLowerCase();
-      let humanMove = smallInput.charAt(0).toUpperCase() + smallInput.slice(1);
+      const smallInput = playerInput.toLowerCase();
+      const humanMove = smallInput.charAt(0).toUpperCase() + smallInput.slice(1);
 
       return humanMove;
     }
 
     function playRound(playerSelection, computerSelection) {
-      let win = 'win';
-      let lose = 'lose';
-      let tie = 'tie';
-      let broken = 'broken';
+      const win = 'win';
+      const lose = 'lose';
+      const tie = 'tie';
+      const broken = 'broken';
 
       switch(computerSelection) {
         case 'Rock':
@@ -94,10 +94,10 @@
         let computerScore = 0;
 
         for(let i = 0; i < 5; i++) {
-          let playerSelection = humanPlay();
-          let computerSelection = computerPlay();
+          const playerSelection = humanPlay();
+          const computerSelection = computerPlay();
 
-          let round = playRound(playerSelection, computerSelection);
+          const round = playRound(playerSelection, computerSelection);
 
           switch(round) {
             case 'win':
