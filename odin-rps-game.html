@@ -53,10 +53,10 @@
       return randomMove;
     }
 
-    function playRound(playerSelection) {
+    function playRound(lowerCasePlayerSelection) {
       const computerSelection = computerPlay();
 
-      const cappedPlayerSelection = playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1);
+      const playerSelection = lowerCasePlayerSelection.charAt(0).toUpperCase() + lowerCasePlayerSelection.slice(1);
       
       const win = 'win';
       const lose = 'lose';
@@ -65,32 +65,32 @@
 
       switch(computerSelection) {
         case 'Rock':
-          if(playerSelection === 'paper') {
-            displayRoundResult(win, cappedPlayerSelection, computerSelection);
-          } else if(playerSelection === 'scissors') {
-            displayRoundResult(lose, cappedPlayerSelection, computerSelection);
+          if(playerSelection === 'Paper') {
+            displayRoundResult(win, playerSelection, computerSelection);
+          } else if(playerSelection === 'Scissors') {
+            displayRoundResult(lose, playerSelection, computerSelection);
           } else {
-            displayRoundResult(tie, cappedPlayerSelection, computerSelection);
+            displayRoundResult(tie, playerSelection, computerSelection);
           }
           break;
 
         case 'Paper':
-          if(playerSelection === 'scissors') {
-            displayRoundResult(win, cappedPlayerSelection, computerSelection);
-          } else if(playerSelection === 'rock') {
-            displayRoundResult(lose, cappedPlayerSelection, computerSelection);
+          if(playerSelection === 'Scissors') {
+            displayRoundResult(win, playerSelection, computerSelection);
+          } else if(playerSelection === 'Rock') {
+            displayRoundResult(lose, playerSelection, computerSelection);
           } else {
-            displayRoundResult(tie, cappedPlayerSelection, computerSelection);
+            displayRoundResult(tie, playerSelection, computerSelection);
           }
           break;
 
         case 'Scissors':
-          if(playerSelection === 'rock') {
-            displayRoundResult(win, cappedPlayerSelection, computerSelection);
-          } else if(playerSelection === 'paper') {
-            displayRoundResult(lose, cappedPlayerSelection, computerSelection);
+          if(playerSelection === 'Rock') {
+            displayRoundResult(win, playerSelection, computerSelection);
+          } else if(playerSelection === 'Paper') {
+            displayRoundResult(lose, playerSelection, computerSelection);
           } else {
-            displayRoundResult(tie, cappedPlayerSelection, computerSelection);
+            displayRoundResult(tie, playerSelection, computerSelection);
           }
           break;
         }
