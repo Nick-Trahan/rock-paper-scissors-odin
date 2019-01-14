@@ -23,11 +23,16 @@
     <p id="round-results" class="results"></p>
     <p id="player-score" class="scores"></p>
     <p id="computer-score" class="scores"></p>
+  </div>
+  <div id="winner-div">
     <p id="game-winner" class="results"></p>
   </div>
   <script>
     const btnGo = document.querySelector('#go-button')
+    const divIntro = document.querySelector('#intro-div')
+    const gameFields = document.querySelectorAll('.hidden-fields');
     const divInput = document.querySelector('#input-div');
+    const divWinner = document.querySelector('#winner-div');
 
     let playerScore = 0;
     let computerScore = 0;
@@ -35,12 +40,10 @@
     btnGo.addEventListener('click', showGame);
 
     function showGame() {
-      const gameFields = document.querySelectorAll('.hidden-fields');
-      const divIntro = document.querySelector('#intro-div');
-      
       gameFields.forEach((element) => {element.classList.toggle('hidden-fields')});
 
       divIntro.classList.toggle('hidden-fields');
+      divWinner.classList.toggle('hidden-fields');
     }
     
     divInput.addEventListener('click', (event) => {const clickedButton = event.target; playRound(clickedButton.id);});
@@ -135,8 +138,12 @@
         const fieldGameWinner = document.querySelector('#game-winner');
 
         if (playerScore === 5) {
+          gameFields.forEach((element) => {element.classList.toggle('hidden-fields')});
+          divWinner.classList.toggle('hidden-fields');
           fieldGameWinner.textContent = 'You Win the Game!! ' + playerScore + ' to ' + computerScore;
         } else if (computerScore === 5) {
+          gameFields.forEach((element) => {element.classList.toggle('hidden-fields')});
+          divWinner.classList.toggle('hidden-fields');
           fieldGameWinner.textContent = 'You Lose the Game!! ' + playerScore + ' to ' + computerScore;
         }
       }
